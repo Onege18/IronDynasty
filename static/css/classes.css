@@ -1,0 +1,189 @@
+/* ===== CLASSES SECTION (TOP CITIES STYLE, DARK THEME) ===== */
+
+.classes-section {
+    background: #050505;
+    color: #ffffff;
+    padding: 90px 80px 110px;
+}
+
+.classes-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+
+.classes-header {
+    margin-bottom: 56px;
+}
+
+.classes-header .section-label {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ff8b3d; /* оранжевый акцент */
+    display: inline-block;
+}
+
+.classes-header h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 42px;
+    margin: 12px 0 14px;
+    letter-spacing: -0.03em;
+}
+
+.classes-header p {
+    max-width: 480px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+}
+
+/* Carousel wrapper */
+
+.classes-carousel {
+    position: relative;
+}
+
+/* Track with cards — аналог owl-carousel */
+
+.classes-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+    scrollbar-width: none;          /* Firefox */
+}
+
+.classes-track::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+}
+
+/* Single card (= .item) */
+
+.class-card {
+    position: relative;
+    flex: 0 0 calc(33.333% - 13.5px);
+    height: 380px;
+    border-radius: 18px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: #111111;
+}
+
+.class-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+/* Overlay, как в примере */
+
+.class-card .overlay {
+    position: absolute;
+    inset: 0;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.95) 0%,
+        rgba(0,0,0,0.65) 25%,
+        rgba(0,0,0,0.05) 100%
+    );
+}
+
+.class-card .overlay span {
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+.class-card .overlay h3 {
+    font-size: 20px;
+    margin-bottom: 4px;
+    letter-spacing: 0.01em;
+}
+
+.class-card .overlay p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Nav buttons (как .owl-nav) */
+
+.classes-nav {
+    position: absolute;
+    top: -72px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: #000000;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.classes-nav.prev {
+    right: 56px;
+}
+
+/* Hover */
+
+.classes-nav:hover {
+    background: #ff8b3d;
+    color: #050505;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 900px) {
+    .classes-section {
+        padding: 70px 20px 80px;
+    }
+
+    .classes-header h2 {
+        font-size: 32px;
+    }
+
+    .class-card {
+        flex: 0 0 85%;
+        height: 320px;
+    }
+
+    .classes-nav {
+        top: -56px;
+    }
+
+    .classes-nav.prev {
+        right: 54px;
+    }
+}
+
+@media (max-width: 600px) {
+    .classes-header h2 {
+        font-size: 28px;
+    }
+
+    .classes-header p {
+        max-width: 100%;
+    }
+}

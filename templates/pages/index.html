@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <!-- HEADER -->
+    <header class="hero-header">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <img src="{% static 'img/iron_logo.png' %}" class="logo-icon">
+            <span>{% trans "IronDynasty" %}</span>
+        </div>
+
+        <!-- DESKTOP NAV -->
+       <nav class="nav desktop-nav">
+    <a href="/#about">{% trans "About us" %}</a>
+    <a href="/#classes">{% trans "Classes" %}</a>
+    <a href="/#membership">{% trans "Membership" %}</a>
+    <a href="/#contact">{% trans "Contact" %}</a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'cabinet' %}" class="btn-outline">
+            {% trans "My Cabinet" %}
+        </a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn-outline">
+            {% trans "Join Us" %}
+        </a>
+    {% endif %}
+</nav>
+
+
+        <!-- DESKTOP LANGUAGE SWITCHER -->
+        <form action="{% url 'set_language' %}" method="post" class="lang-switch">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+
+            <button name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}">KZ</button>
+            <button name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</button>
+            <button name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+        </form>
+
+        <!-- BURGER MENU -->
+        <div class="burger" id="burger">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+
+    <!-- OVERLAY -->
+    <div class="mobile-overlay" id="overlay"></div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="menu-close" id="menuClose">✕</button>
+
+        <div class="menu-inner">
+
+            <!-- MOBILE NAV -->
+            <a href="#about" class="menu-link">{% trans "About us" %}</a>
+            <a href="#classes" class="menu-link">{% trans "Classes" %}</a>
+            <a href="#membership" class="menu-link">{% trans "Membership" %}</a>
+            <a href="#contact" class="menu-link">{% trans "Contact" %}</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'cabinet' %}" class="btn-primary menu-btn">
+                    {% trans "My Cabinet" %}
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn-primary menu-btn">
+                    {% trans "Join Us" %}
+                </a>
+            {% endif %}
+
+            <!-- MOBILE INFO -->
+            <div class="menu-info">
+                <div>
+                    <h4>{% trans "LOCATION" %}</h4>
+                    <p>{% trans "Astana, Kazakhstan" %}</p>
+                </div>
+                <div>
+                    <h4>{% trans "CONTACT" %}</h4>
+                    <p>info@irondynasty.com</p>
+                    <p>support@irondynasty.com</p>
+                </div>
+            </div>
+
+            <!-- MOBILE SOCIALS -->
+            <div class="menu-socials">
+                <span>IG</span>
+                <span>YT</span>
+                <span>FB</span>
+                <span>X</span>
+            </div>
+
+            <!-- MOBILE LANGUAGE SWITCHER -->
+            <form action="{% url 'set_language' %}" method="post" class="lang-switch">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+
+                <button name="language" value="kk" class="lang-btn {% if LANGUAGE_CODE == 'kk' %}active{% endif %}">KZ</button>
+                <button name="language" value="ru" class="lang-btn {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">RU</button>
+                <button name="language" value="en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+
+        <p class="hero-label">
+            {% trans "Choice of fitness freaks" %}
+        </p>
+
+        <h1 class="hero-title">
+            {% trans "YOUR FITNESS" %}<br>
+            {% trans "JOURNEY" %}<br>
+            {% trans "STARTS WITH US" %}
+        </h1>
+
+        <p class="hero-text">
+            {% trans "Join a community that pushes you to become your strongest self — physically and mentally." %}
+        </p>
+
+        <a href="#" class="btn-primary">{% trans "LET’S BE FIT" %}</a>
+    </div>
+
+</section>
+
+<!-- ABOUT US SECTION -->
+<section class="about-section">
+
+    <div class="mission-text">
+        {% trans "Dedicated to nurturing well-being, fostering community, and promoting personal growth." %}
+    </div>
+
+    <div class="about-content">
+        <h2>{% trans "ABOUT US" %}</h2>
+
+        <div class="columns">
+
+            <div class="col">
+                {% trans "Our focus has been on fostering a sense of belonging and camaraderie. IronDynasty isn’t just a gym; it’s a supportive community." %}
+            </div>
+
+            <div class="col">
+                {% trans "Over the years, we've witnessed countless transformation stories from individuals who came to us seeking change and left stronger." %}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <div class="videos">
+        <div class="videos-slider">
+            <video src="/static/video/about1.mp4" autoplay muted loop></video>
+            <video src="/static/video/about2.mp4" autoplay muted loop></video>
+            <video src="/static/video/about3.mp4" autoplay muted loop></video>
+            <video src="/static/video/about4.mp4" autoplay muted loop></video>
+            <video src="/static/video/about5.mp4" autoplay muted loop></video>
+            <video src="/static/video/about6.mp4" autoplay muted loop></video>
+        </div>
+    </div>
+
+</section>
+
+<!-- STATISTICS SECTION -->
+<section class="stats-section">
+    <div class="stat">
+        <div class="number" data-target="400">400</div>
+        <div class="stat-title">{% trans "Happy Members" %}</div>
+        <p>{% trans "Our community is growing fast" %}</p>
+    </div>
+
+    <div class="stat">
+        <div class="number" data-target="20">20</div>
+        <div class="stat-title">{% trans "Weekly Classes" %}</div>
+        <p>{% trans "Every week we make online classes" %}</p>
+    </div>
+
+    <div class="stat">
+        <div class="number" data-target="8">8</div>
+        <div class="stat-title">{% trans "Certified Trainers" %}</div>
+        <p>{% trans "Helps to get your dream body" %}</p>
+    </div>
+
+    <div class="stat">
+        <div class="number" data-target="99">99</div>
+        <div class="stat-title">{% trans "Customer Satisfied" %}</div>
+        <p>{% trans "We ensure our best service" %}</p>
+    </div>
+</section>
+
+
+
+<!-- CLASSES SECTION -->
+<section id="classes" class="classes-section">
+    <div class="classes-inner">
+
+        <div class="classes-header">
+            <span class="section-label">{% trans "Top classes" %}</span>
+            <h2>{% trans "Our popular classes" %}</h2>
+            <p>
+                {% trans "We design each program to build strength, boost confidence, and transform your life." %}
+            </p>
+        </div>
+
+        <div class="classes-carousel">
+            <button class="classes-nav prev" type="button">&#10094;</button>
+
+            <div class="classes-track">
+                <!-- 1 -->
+                <article class="class-card">
+                    <img src="{% static 'img/classes_strength.jpg' %}" alt="Strength Training">
+                    <div class="overlay">
+                        <span>{% trans "Strength" %}</span>
+                        <div>
+                            <h3>{% trans "Strength Training" %}</h3>
+                            <p>{% trans "Build muscle and overall power." %}</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2 -->
+                <article class="class-card">
+                    <img src="{% static 'img/classes_hiit.jpg' %}" alt="HIIT Workout">
+                    <div class="overlay">
+                        <span>{% trans "Cardio" %}</span>
+                        <div>
+                            <h3>{% trans "HIIT Workout" %}</h3>
+                            <p>{% trans "High-intensity intervals to burn calories." %}</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3 -->
+                <article class="class-card">
+                    <img src="{% static 'img/classes_boxing.jpg' %}" alt="Boxing">
+                    <div class="overlay">
+                        <span>{% trans "Boxing" %}</span>
+                        <div>
+                            <h3>{% trans "Boxing Class" %}</h3>
+                            <p>{% trans "Improve coordination and endurance." %}</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4 -->
+                <article class="class-card">
+                    <img src="{% static 'img/classes_yoga.jpg' %}" alt="Yoga">
+                    <div class="overlay">
+                        <span>{% trans "Mobility" %}</span>
+                        <div>
+                            <h3>{% trans "Yoga & Stretch" %}</h3>
+                            <p>{% trans "Recovery, flexibility, and balance." %}</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5 -->
+                <article class="class-card">
+                    <img src="{% static 'img/classes_crossfit.jpg' %}" alt="Cross Training">
+                    <div class="overlay">
+                        <span>{% trans "Cross" %}</span>
+                        <div>
+                            <h3>{% trans "Cross Training" %}</h3>
+                            <p>{% trans "Functional workouts for full body." %}</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6 -->
+                <article class="class-card">
+                    <img src="{% static 'img/classes_personal.jpg' %}" alt="Personal Training">
+                    <div class="overlay">
+                        <span>{% trans "Personal" %}</span>
+                        <div>
+                            <h3>{% trans "Personal Coaching" %}</h3>
+                            <p>{% trans "1:1 sessions tailored to your goals." %}</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <button class="classes-nav next" type="button">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/stats.js' %}"></script>
+<script src="{% static 'js/classes.js' %}"></script>   <!-- ОБЯЗАТЕЛЬНО -->
+
+{% endblock %}

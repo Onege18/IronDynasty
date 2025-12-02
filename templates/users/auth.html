@@ -1,0 +1,217 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% trans "IronDynasty — Auth" %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="auth-body">
+
+<div class="auth-layout">
+
+    <!-- LEFT PANEL -->
+    <section class="auth-left">
+        <div class="auth-left-inner">
+            <div class="auth-brand">
+                <div class="auth-logo">
+                    <img src="{% static 'img/iron_logo.png' %}" alt="IronDynasty">
+                </div>
+                <span class="auth-brand-name">{% trans "IronDynasty" %}</span>
+            </div>
+
+            <p class="auth-label">{% trans "Get Started with Us" %}</p>
+
+            <h1 class="auth-title">
+                {% trans "Join the" %}<br>IronDynasty {% trans "Club" %}
+            </h1>
+
+            <p class="auth-subtitle">
+                {% trans "Complete these easy steps to create your account and start your fitness journey." %}
+            </p>
+
+            <div class="auth-steps">
+                <div class="auth-step auth-step-active">
+                    <span class="auth-step-number">1</span>
+                    <div class="auth-step-text">
+                        <p class="auth-step-title">{% trans "Create your account" %}</p>
+                        <p class="auth-step-desc">{% trans "Sign up as a client or trainer." %}</p>
+                    </div>
+                </div>
+
+                <div class="auth-step">
+                    <span class="auth-step-number">2</span>
+                    <div class="auth-step-text">
+                        <p class="auth-step-title">{% trans "Choose membership" %}</p>
+                        <p class="auth-step-desc">{% trans "Pick the plan that fits your goals." %}</p>
+                    </div>
+                </div>
+
+                <div class="auth-step">
+                    <span class="auth-step-number">3</span>
+                    <div class="auth-step-text">
+                        <p class="auth-step-title">{% trans "Start training" %}</p>
+                        <p class="auth-step-desc">{% trans "Join sessions and track progress." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <section class="auth-right">
+        <div class="auth-card">
+
+            <div class="forms-wrapper {% if mode == 'register' %}show-register{% endif %}">
+
+                <!-- LOGIN FORM -->
+                <div class="form-panel form-login">
+                    <h2 class="panel-title">{% trans "Log in" %}</h2>
+                    <p class="panel-subtitle">{% trans "Welcome back! Enter your credentials." %}</p>
+
+                    {% if error %}
+                        <div class="form-error">{{ error }}</div>
+                    {% endif %}
+
+                    <form action="{% url 'login' %}" method="post" class="auth-form">
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label>{% trans "Username" %}</label>
+                            <div class="field-input">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" name="username" placeholder="{% trans 'Enter your username' %}" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>{% trans "Password" %}</label>
+                            <div class="input-box password-box">
+                                <input type="password" name="password" placeholder="{% trans 'Enter your password' %}" required id="passwordLoginField">
+                                <i class='bx bx-hide toggle-password' data-target="passwordLoginField"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-row between-row">
+                            <a href="{% url 'reset_password' %}" class="link-muted">{% trans "Forgot password?" %}</a>
+                        </div>
+
+                        <button type="submit" class="primary-btn">{% trans "Log in" %}</button>
+
+                        <div class="divider">
+                            <span>{% trans "or continue with" %}</span>
+                        </div>
+
+                        <div class="social-row">
+                            <button type="button" class="social-btn"><i class='bx bxl-google'></i> Google</button>
+                            <button type="button" class="social-btn"><i class='bx bxl-github'></i> Github</button>
+                        </div>
+
+                        <p class="switch-text">
+                            {% trans "Don’t have an account?" %}
+                            <button type="button" class="link-button go-register">{% trans "Sign up" %}</button>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div class="form-panel form-register">
+                    <h2 class="panel-title">{% trans "Sign up account" %}</h2>
+                    <p class="panel-subtitle">{% trans "Enter your personal data to create your account." %}</p>
+
+                    {% if form and form.errors %}
+                        <div class="form-error">
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <form action="{% url 'register' %}" method="post" class="auth-form">
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label>{% trans "Username" %}</label>
+                            <div class="field-input">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" name="username" placeholder="{% trans 'Choose a username' %}" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>{% trans "Email" %}</label>
+                            <div class="field-input">
+                                <i class='bx bxs-envelope'></i>
+                                <input type="email" name="email" placeholder="{% trans 'Enter your email' %}" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>{% trans "Password" %}</label>
+                            <div class="input-box password-box">
+                                <input type="password" name="password1" placeholder="{% trans 'Create a password' %}" required id="password1Field">
+                                <i class='bx bx-hide toggle-password' data-target="password1Field"></i>
+                            </div>
+                            <p class="field-hint">{% trans "Must be at least 8 characters." %}</p>
+                        </div>
+
+                        <div class="field">
+                            <label>{% trans "Repeat password" %}</label>
+                            <div class="input-box password-box">
+                                <input type="password" name="password2" placeholder="{% trans 'Repeat your password' %}" required id="password2Field">
+                                <i class='bx bx-hide toggle-password' data-target="password2Field"></i>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>{% trans "Register as" %}</label>
+                            <div class="role-row">
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="client" checked>
+                                    <span>{% trans "Client" %}</span>
+                                </label>
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="trainer">
+                                    <span>{% trans "Trainer" %}</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="primary-btn">{% trans "Sign up" %}</button>
+
+                        <div class="divider">
+                            <span>{% trans "or sign up with" %}</span>
+                        </div>
+
+                        <div class="social-row">
+                            <button type="button" class="social-btn"><i class='bx bxl-google'></i> Google</button>
+                            <button type="button" class="social-btn"><i class='bx bxl-github'></i> Github</button>
+                        </div>
+
+                        <p class="switch-text">
+                            {% trans "Already have an account?" %}
+                            <button type="button" class="link-button go-login">{% trans "Log in" %}</button>
+                        </p>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>

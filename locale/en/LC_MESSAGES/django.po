@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright...
+# (оставляем верх как есть)
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-03 00:11+0500\n"
+"PO-Revision-Date: 2025-11-30 14:00+0500\n"
+"Last-Translator: Akniyet <your@email>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/pages/index.html:15 templates/users/auth.html:24
+msgid "IronDynasty"
+msgstr "IronDynasty"
+
+#: templates/pages/index.html:20 templates/pages/index.html:64
+msgid "About us"
+msgstr "About us"
+
+#: templates/pages/index.html:21 templates/pages/index.html:65
+msgid "Classes"
+msgstr "Classes"
+
+#: templates/pages/index.html:22 templates/pages/index.html:66
+msgid "Membership"
+msgstr "Membership"
+
+#: templates/pages/index.html:23 templates/pages/index.html:67
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/pages/index.html:27 templates/pages/index.html:71
+msgid "My Cabinet"
+msgstr "My Cabinet"
+
+#: templates/pages/index.html:31 templates/pages/index.html:75
+msgid "Join Us"
+msgstr "Join Us"
+
+#: templates/pages/index.html:82
+msgid "LOCATION"
+msgstr "LOCATION"
+
+#: templates/pages/index.html:83
+msgid "Astana, Kazakhstan"
+msgstr "Astana, Kazakhstan"
+
+#: templates/pages/index.html:86
+msgid "CONTACT"
+msgstr "CONTACT"
+
+#: templates/pages/index.html:117
+msgid "Choice of fitness freaks"
+msgstr "Choice of fitness freaks"
+
+#: templates/pages/index.html:121
+msgid "YOUR FITNESS"
+msgstr "YOUR FITNESS"
+
+#: templates/pages/index.html:122
+msgid "JOURNEY"
+msgstr "JOURNEY"
+
+#: templates/pages/index.html:123
+msgid "STARTS WITH US"
+msgstr "STARTS WITH US"
+
+#: templates/pages/index.html:127
+msgid ""
+"Join a community that pushes you to become your strongest self — physically "
+"and mentally."
+msgstr ""
+"Join a community that pushes you to become your strongest self — physically "
+"and mentally."
+
+#: templates/pages/index.html:130
+msgid "LET’S BE FIT"
+msgstr "LET’S BE FIT"
+
+#: templates/pages/index.html:139
+msgid ""
+"Dedicated to nurturing well-being, fostering community, and promoting "
+"personal growth."
+msgstr ""
+"Dedicated to nurturing well-being, fostering community, and promoting "
+"personal growth."
+
+#: templates/pages/index.html:143
+msgid "ABOUT US"
+msgstr "ABOUT US"
+
+#: templates/pages/index.html:148
+msgid ""
+"Our focus has been on fostering a sense of belonging and camaraderie. "
+"IronDynasty isn’t just a gym; it’s a supportive community."
+msgstr ""
+"Our focus has been on fostering a sense of belonging and camaraderie. "
+"IronDynasty isn’t just a gym; it’s a supportive community."
+
+#: templates/pages/index.html:152
+msgid ""
+"Over the years, we've witnessed countless transformation stories from "
+"individuals who came to us seeking change and left stronger."
+msgstr ""
+"Over the years, we've witnessed countless transformation stories from "
+"individuals who came to us seeking change and left stronger."
+
+#: templates/pages/index.html:176
+msgid "Happy Members"
+msgstr "Happy Members"
+
+#: templates/pages/index.html:177
+msgid "Our community is growing fast"
+msgstr "Our community is growing fast"
+
+#: templates/pages/index.html:182
+msgid "Weekly Classes"
+msgstr "Weekly Classes"
+
+#: templates/pages/index.html:183
+msgid "Every week we make online classes"
+msgstr "Every week we make online classes"
+
+#: templates/pages/index.html:188
+msgid "Certified Trainers"
+msgstr "Certified Trainers"
+
+#: templates/pages/index.html:189
+msgid "Helps to get your dream body"
+msgstr "Helps to get your dream body"
+
+#: templates/pages/index.html:194
+msgid "Customer Satisfied"
+msgstr "Customer Satisfied"
+
+#: templates/pages/index.html:195
+msgid "We ensure our best service"
+msgstr "We ensure our best service"
+
+#: templates/pages/index.html:206
+#, fuzzy
+#| msgid "Classes"
+msgid "Top classes"
+msgstr "Classes"
+
+#: templates/pages/index.html:207
+msgid "Our popular classes"
+msgstr ""
+
+#: templates/pages/index.html:209
+msgid ""
+"We design each program to build strength, boost confidence, and transform "
+"your life."
+msgstr ""
+
+#: templates/pages/index.html:221
+msgid "Strength"
+msgstr ""
+
+#: templates/pages/index.html:223
+msgid "Strength Training"
+msgstr ""
+
+#: templates/pages/index.html:224
+msgid "Build muscle and overall power."
+msgstr ""
+
+#: templates/pages/index.html:233
+msgid "Cardio"
+msgstr ""
+
+#: templates/pages/index.html:235
+msgid "HIIT Workout"
+msgstr ""
+
+#: templates/pages/index.html:236
+msgid "High-intensity intervals to burn calories."
+msgstr ""
+
+#: templates/pages/index.html:245
+msgid "Boxing"
+msgstr ""
+
+#: templates/pages/index.html:247
+msgid "Boxing Class"
+msgstr ""
+
+#: templates/pages/index.html:248
+msgid "Improve coordination and endurance."
+msgstr ""
+
+#: templates/pages/index.html:257
+msgid "Mobility"
+msgstr ""
+
+#: templates/pages/index.html:259
+msgid "Yoga & Stretch"
+msgstr ""
+
+#: templates/pages/index.html:260
+msgid "Recovery, flexibility, and balance."
+msgstr ""
+
+#: templates/pages/index.html:269
+msgid "Cross"
+msgstr ""
+
+#: templates/pages/index.html:271
+msgid "Cross Training"
+msgstr ""
+
+#: templates/pages/index.html:272
+msgid "Functional workouts for full body."
+msgstr ""
+
+#: templates/pages/index.html:281
+msgid "Personal"
+msgstr ""
+
+#: templates/pages/index.html:283
+msgid "Personal Coaching"
+msgstr ""
+
+#: templates/pages/index.html:284
+msgid "1:1 sessions tailored to your goals."
+msgstr ""
+
+#: templates/users/auth.html:8
+#, fuzzy
+#| msgid "IronDynasty Club"
+msgid "IronDynasty — Auth"
+msgstr "IronDynasty Club"
+
+#: templates/users/auth.html:27
+msgid "Get Started with Us"
+msgstr "Get Started with Us"
+
+#: templates/users/auth.html:30
+msgid "Join the"
+msgstr "Join the"
+
+#: templates/users/auth.html:30
+msgid "Club"
+msgstr ""
+
+#: templates/users/auth.html:34
+msgid ""
+"Complete these easy steps to create your account and start your fitness "
+"journey."
+msgstr ""
+"Complete these easy steps to create your account and start your fitness "
+"journey."
+
+#: templates/users/auth.html:41
+#, fuzzy
+#| msgid "Already have an account?"
+msgid "Create your account"
+msgstr "Already have an account?"
+
+#: templates/users/auth.html:42
+msgid "Sign up as a client or trainer."
+msgstr "Sign up as a client or trainer."
+
+#: templates/users/auth.html:49
+#, fuzzy
+#| msgid "Membership"
+msgid "Choose membership"
+msgstr "Membership"
+
+#: templates/users/auth.html:50
+msgid "Pick the plan that fits your goals."
+msgstr "Pick the plan that fits your goals."
+
+#: templates/users/auth.html:57
+msgid "Start training"
+msgstr ""
+
+#: templates/users/auth.html:58
+msgid "Join sessions and track progress."
+msgstr "Join sessions and track progress."
+
+#: templates/users/auth.html:73 templates/users/auth.html:103
+#: templates/users/auth.html:204
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/users/auth.html:74
+msgid "Welcome back! Enter your credentials."
+msgstr "Welcome back! Enter your credentials."
+
+#: templates/users/auth.html:84 templates/users/auth.html:145
+msgid "Username"
+msgstr "Username"
+
+#: templates/users/auth.html:87
+msgid "Enter your username"
+msgstr "Enter your username"
+
+#: templates/users/auth.html:92 templates/users/auth.html:161
+msgid "Password"
+msgstr "Password"
+
+#: templates/users/auth.html:94
+msgid "Enter your password"
+msgstr "Enter your password"
+
+#: templates/users/auth.html:100
+msgid "Forgot password?"
+msgstr "Forgot password?"
+
+#: templates/users/auth.html:106
+msgid "or continue with"
+msgstr "or continue with"
+
+#: templates/users/auth.html:115
+msgid "Don’t have an account?"
+msgstr "Don’t have an account?"
+
+#: templates/users/auth.html:116 templates/users/auth.html:191
+msgid "Sign up"
+msgstr "Sign up"
+
+#: templates/users/auth.html:123
+msgid "Sign up account"
+msgstr "Sign up account"
+
+#: templates/users/auth.html:124
+msgid "Enter your personal data to create your account."
+msgstr "Enter your personal data to create your account."
+
+#: templates/users/auth.html:148
+msgid "Choose a username"
+msgstr "Choose a username"
+
+#: templates/users/auth.html:153
+msgid "Email"
+msgstr "Email"
+
+#: templates/users/auth.html:156
+msgid "Enter your email"
+msgstr "Enter your email"
+
+#: templates/users/auth.html:163
+msgid "Create a password"
+msgstr "Create a password"
+
+#: templates/users/auth.html:166
+msgid "Must be at least 8 characters."
+msgstr "Must be at least 8 characters."
+
+#: templates/users/auth.html:170
+msgid "Repeat password"
+msgstr "Repeat password"
+
+#: templates/users/auth.html:172
+msgid "Repeat your password"
+msgstr "Repeat your password"
+
+#: templates/users/auth.html:178
+msgid "Register as"
+msgstr "Register as"
+
+#: templates/users/auth.html:182
+msgid "Client"
+msgstr "Client"
+
+#: templates/users/auth.html:186
+msgid "Trainer"
+msgstr "Trainer"
+
+#: templates/users/auth.html:194
+msgid "or sign up with"
+msgstr "or sign up with"
+
+#: templates/users/auth.html:203
+msgid "Already have an account?"
+msgstr "Already have an account?"
