@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/membership_success.css' %}">
+
+<div class="success-container">
+    <div class="success-box">
+        <h1>Покупка успешна 🎉</h1>
+        <p>Ваш абонемент активирован. Спасибо, что выбираете IronDynasty.</p>
+
+        <a href="{% url 'profile' %}" class="btn">Перейти в профиль</a>
+        <a href="{% url 'membership_history' %}" class="btn-secondary">История абонементов</a>
+    </div>
+</div>
+
+{% endblock %}

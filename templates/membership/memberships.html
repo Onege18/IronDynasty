@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/memberships.css' %}">
+
+<div class="memberships-container">
+
+    <!-- Заголовок -->
+    <h1 class="page-title">Абонементы</h1>
+
+    <!-- Текущий абонемент -->
+    {% if current %}
+        <div class="current-membership">
+            <h2>Ваш текущий абонемент</h2>
+            <p><strong>Тип:</strong> {{ current.type }}</p>
+            <p><strong>Статус:</strong> {{ current.status }}</p>
+            <p><strong>Действует до:</strong> {{ current.end_date }}</p>
+        </div>
+    {% else %}
+        <div class="current-membership empty">
+            <p>У вас ещё нет абонемента</p>
+        </div>
+    {% endif %}
+
+    <!-- Список тарифов -->
+    <div class="membership-list">
+        {% for t in types %}
+        <div class="membership-card">
+
+            <h3>{{ t.name }}</h3>
+            <p class="price">{{ t.price }} ₸</p>
+            <p class="duration">{{ t.duration_days }} дней</p>
+
+            <a href="{% url 'buy_membership' t.id %}" class="buy-btn">
+                Купить
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

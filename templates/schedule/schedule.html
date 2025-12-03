@@ -1,0 +1,46 @@
+ {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/schedule.css' %}">
+
+<div class="schedule-container">
+
+    <h1 class="schedule-title">Расписание занятий</h1>
+
+    {% if classes %}
+        <div class="schedule-grid">
+
+            {% for c in classes %}
+            <div class="schedule-card">
+
+                <h3>{{ c.get_class_name_display }}</h3>
+
+                <p class="meta">{{ c.date }} | {{ c.time }}</p>
+
+                <p class="trainer">Тренер: {{ c.trainer.name }}</p>
+                <p class="meta">Мест: {{ c.bookings.count }} / {{ c.max_clients }}</p>
+
+                {% if c.bookings.count >= c.max_clients %}
+                    <button class="schedule-btn disabled">Мест нет</button>
+
+                {% elif user.is_authenticated %}
+                    <a href="{% url 'book_class' c.id %}" class="schedule-btn">
+                        Записаться
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="schedule-btn">Войти</a>
+                {% endif %}
+
+            </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <p class="empty">Нет ближайших занятий</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

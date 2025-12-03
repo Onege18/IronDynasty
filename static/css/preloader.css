@@ -1,0 +1,174 @@
+/* ============================== */
+/*       PRELOADER CONTAINER      */
+/* ============================== */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* Disappear */
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ============================== */
+/*       MAIN ROW (LOGO + TEXT)   */
+/* ============================== */
+.loader-row {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    animation: rowAppear 1.8s ease forwards;
+    transition: opacity 0.7s ease; /* For smooth fade-out */
+}
+
+/* Main appear animation */
+@keyframes rowAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================== */
+/*             LOGO               */
+/* ============================== */
+.loader-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    opacity: 0;
+    animation: logoShow 1.8s ease forwards;
+    transition: opacity 0.7s ease; /* sync fade-out */
+}
+
+@keyframes logoShow {
+    0% { opacity: 0; transform: scale(0.85); }
+    70% { opacity: 1; transform: scale(1.03); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ============================== */
+/*             TEXT               */
+/* ============================== */
+.loader-title {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #f4e4bb;
+    opacity: 0;
+    animation: titleShow 1.8s ease forwards;
+    transition: opacity 0.7s ease; /* sync fade-out */
+    line-height: 1;
+}
+
+@keyframes titleShow {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+        filter: blur(6px);
+        letter-spacing: 14px;
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        letter-spacing: 4px;
+    }
+}
+
+/* ============================== */
+/*   SYNCHRONIZED EXIT ANIMATION  */
+/* ============================== */
+
+#preloader.hidden .loader-row,
+#preloader.hidden .loader-logo,
+#preloader.hidden .loader-title {
+    opacity: 0;     /* fade-out all elements together */
+}
+
+/* ============================== */
+/*        MOBILE ADAPTIVE         */
+/* ============================== */
+
+@media (max-width: 480px) {
+
+    .loader-row {
+        gap: 14px;
+        transform: translateY(8px) scale(0.92);
+    }
+
+    .loader-logo {
+        width: 65px;
+        height: 65px;
+    }
+
+    .loader-title {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* Маленькие экраны (SE / Android Mini) */
+@media (max-width: 360px) {
+
+    .loader-row {
+        gap: 10px;
+        transform: scale(0.88);
+    }
+
+    .loader-logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .loader-title {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+}
+
+/* ============================== */
+/*     FORCE MOBILE ADAPTIVE      */
+/* ============================== */
+
+@media screen and (max-width: 600px) {
+
+    .loader-row {
+        gap: 24px !important;
+        transform: translateY(0) scale(0.85) !important;
+        justify-content: center !important;
+    }
+
+    .loader-logo {
+        width: 75px !important;
+        height: 75px !important;
+    }
+
+    .loader-title {
+        font-size: 50px !important;
+        letter-spacing: 1.5px !important;
+    }
+}

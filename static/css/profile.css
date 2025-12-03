@@ -1,0 +1,131 @@
+.profile-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 40px;
+}
+
+.profile-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d4af37;
+}
+
+.profile-main h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.status {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.status.активен {
+    color: #26e85c;
+}
+
+.status.заморожен {
+    color: #2fa8ff;
+}
+
+.status.истёк {
+    color: #ff5252;
+}
+
+.buy-btn {
+    background: #d4af37;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #000;
+    font-weight: 700;
+}
+
+.profile-section {
+    background: rgba(255,255,255,0.06);
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.profile-section h2 {
+    margin-bottom: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.info-item {
+    color: #ddd;
+}
+
+.info-item span {
+    color: #d4af37;
+    font-weight: 600;
+}
+
+.bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.booking-card {
+    padding: 15px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+}
+
+.cancel-btn {
+    color: #ff5252;
+    font-weight: 600;
+}
+
+.stats-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item span {
+    color: #ccc;
+}
+
+.stat-item h3 {
+    font-size: 30px;
+    color: #d4af37;
+}
+
+.profile-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-menu li {
+    margin: 12px 0;
+}
+
+.profile-menu a {
+    color: #fff;
+    font-size: 18px;
+}
+
+.profile-menu a.danger {
+    color: #ff5252;
+    font-weight: 700;
+}

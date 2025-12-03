@@ -1,2 +1,110 @@
-<h1>Client Cabinet</h1>
-<p>Hello, {{ request.user.username }}!</p>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="user-info">
+            <img src="{% if profile.avatar %}{{ profile.avatar.url }}{% else %}{% static 'img/default_avatar.png' %}{% endif %}"
+                class="profile-avatar" />
+
+            <h2>{{ user.username }}</h2>
+            <p class="role">Клиент</p>
+        </div>
+
+        <nav class="menu">
+            <a href="#" class="active">Панель</a>
+            <a href="{% url 'profile' %}">Мой профиль</a>
+            <a href="#">Мои абонементы</a>
+            <a href="#">Мои записи</a>
+            <a href="#">История посещений</a>
+            <a href="{% url 'logout' %}" class="logout">Выход</a>
+        </nav>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- METRICS -->
+        <div class="metrics">
+
+            <div class="metric-card">
+                <span>Статус абонемента</span>
+                <h3>
+                    {% if membership %}
+                        {{ membership.status }}
+                    {% else %}
+                        Нет абонемента
+                    {% endif %}
+                </h3>
+            </div>
+
+            <div class="metric-card">
+                <span>Тренировок в этом месяце</span>
+                <h3>{{ stats.monthly_trainings }}</h3>
+            </div>
+
+            <div class="metric-card">
+                <span>Всего тренировок</span>
+                <h3>{{ stats.total_trainings }}</h3>
+            </div>
+
+            <div class="metric-card">
+                <span>Серия дней подряд</span>
+                <h3>{{ stats.streak }}</h3>
+            </div>
+
+        </div>
+
+
+        <!-- UPCOMING TRAININGS -->
+        <div class="section">
+            <h2>Ближайшие занятия</h2>
+
+            {% if upcoming_bookings %}
+                <div class="cards">
+                    {% for b in upcoming_bookings %}
+                        <div class="training-card">
+                            <h3>{{ b.schedule.get_class_name_display }}</h3>
+                            <p>{{ b.schedule.date }} • {{ b.schedule.time }}</p>
+                            <p>Тренер: {{ b.schedule.trainer.name }}</p>
+
+                            <a href="{% url 'cancel_booking' b.id %}" class="cancel-btn">Отменить</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="empty">Нет ближайших записей</p>
+            {% endif %}
+        </div>
+
+
+        <!-- MEMBERSHIP -->
+        <div class="section">
+            <h2>Абонемент</h2>
+
+            {% if membership %}
+                <div class="membership-card">
+                    <h3>{{ membership.type }}</h3>
+                    <p>Действителен до: {{ membership.end_date }}</p>
+
+                    <a href="{% url 'buy_membership' membership.pk %}" class="buy-btn">
+                        Продлить абонемент
+                    </a>
+                </div>
+            {% else %}
+                <a href="/memberships/" class="buy-btn">Купить абонемент</a>
+            {% endif %}
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

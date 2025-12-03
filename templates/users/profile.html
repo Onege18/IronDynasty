@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div class="profile-container">
+
+    <!-- Блок 1 — Аватар + имя + абонемент -->
+    <div class="profile-header">
+<img
+    src="{% if profile.avatar %}{{ profile.avatar.url }}{% else %}{% static 'img/default_avatar.png' %}{% endif %}"
+    class="profile-avatar"
+    alt="avatar"
+/>
+
+        <div class="profile-main">
+            <h1>{{ user.username }}</h1>
+
+            {% if membership %}
+                <p class="status {{ membership.status|lower }}">
+                    Статус: {{ membership.status }}
+                </p>
+                <p class="end-date">
+                    Активен до: {{ membership.end_date }}
+                </p>
+            {% else %}
+                <a href="#" class="buy-btn">Купить абонемент</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Блок 2 — Персональные данные -->
+    <div class="profile-section">
+        <h2>Персональная информация</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span>Телефон:</span> {{ profile.phone|default:"Не указан" }}
+            </div>
+            <div class="info-item">
+                <span>Пол:</span> {{ profile.gender|default:"-" }}
+            </div>
+            <div class="info-item">
+                <span>Дата рождения:</span> {{ profile.birth_date|default:"-" }}
+            </div>
+            <div class="info-item">
+                <span>Дата регистрации:</span> {{ user.date_joined|date:"d.m.Y" }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок 3 — Мои записи -->
+    <div class="profile-section">
+        <h2>Мои занятия</h2>
+
+        {% if upcoming_bookings %}
+            <div class="bookings-list">
+            {% for b in upcoming_bookings %}
+                <div class="booking-card">
+                    <h3>{{ b.schedule.get_class_name_display }}</h3>
+                    <p>{{ b.schedule.date }} | {{ b.schedule.time }}</p>
+                    <p>Тренер: {{ b.schedule.trainer.name }}</p>
+
+                    <a class="cancel-btn" href="{% url 'cancel_booking' b.id %}">
+                        Отменить
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty">У вас нет ближайших занятий</p>
+        {% endif %}
+    </div>
+
+    <!-- Блок 4 — Статистика -->
+    <div class="profile-section">
+        <h2>Статистика</h2>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span>Всего тренировок</span>
+                <h3>{{ stats.total_trainings }}</h3>
+            </div>
+            <div class="stat-item">
+                <span>В этом месяце</span>
+                <h3>{{ stats.monthly_trainings }}</h3>
+            </div>
+            <div class="stat-item">
+                <span>Серия дней</span>
+                <h3>{{ stats.streak }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок 5 — Меню -->
+    <div class="profile-section">
+        <h2>Меню</h2>
+
+        <ul class="profile-menu">
+            <li><a href="{% url 'profile_edit' %}">Изменить профиль</a></li>
+            <li><a href="#">История посещений</a></li>
+            <li><a href="#">Мои абонементы</a></li>
+            <li><a href="{% url 'logout' %}">Выйти</a></li>
+            <li><a class="danger" href="#">Удалить аккаунт</a></li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}

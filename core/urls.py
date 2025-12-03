@@ -14,4 +14,11 @@ urlpatterns = [
 
     # главная страница и прочие
     path('', include('apps.pages.urls')),
+
+    path("schedule/", include("apps.schedule.urls")),
+
+    path('bookings/', include('apps.bookings.urls')),
+
+    path('memberships/', include('apps.membership.urls')),
+
 ]

@@ -13,54 +13,83 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
+
 
 
 </head>
 
 <body>
 
+
+    <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-row">
+        <img src="{% static 'img/iron_logo.png' %}" class="loader-logo">
+        <h1 class="loader-title">IRONDYNASTY</h1>
+    </div>
+</div>
+
+
+
+
+
+    <!-- MAIN CONTENT -->
     {% block content %}{% endblock %}
 
-    <!-- =============== -->
-    <!-- BURGER MENU JS  -->
-    <!-- =============== -->
+    <!-- BURGER MENU JS -->
     <script>
-    const burger = document.getElementById("burger");
-    const menu = document.getElementById("mobileMenu");
-    const overlay = document.getElementById("overlay");
-    const closeBtn = document.getElementById("menuClose");
+        const burger = document.getElementById("burger");
+        const menu = document.getElementById("mobileMenu");
+        const overlay = document.getElementById("overlay");
+        const closeBtn = document.getElementById("menuClose");
 
-    if (burger) {
-        burger.addEventListener("click", () => {
-            burger.classList.toggle("active");
-            menu.classList.toggle("active");
-            overlay.classList.toggle("active");
+        if (burger) {
+            burger.addEventListener("click", () => {
+                burger.classList.toggle("active");
+                menu.classList.toggle("active");
+                overlay.classList.toggle("active");
+            });
+        }
+
+        if (overlay) overlay.addEventListener("click", closeMenu);
+
+        document.querySelectorAll(".mobile-menu a").forEach(link => {
+            link.addEventListener("click", closeMenu);
         });
-    }
 
-    if (overlay) {
-        overlay.addEventListener("click", closeMenu);
-    }
+        if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-        link.addEventListener("click", closeMenu);
-    });
-
-    if (closeBtn) {
-        closeBtn.addEventListener("click", closeMenu);
-    }
-
-    function closeMenu() {
-        burger?.classList.remove("active");
-        menu?.classList.remove("active");
-        overlay?.classList.remove("active");
-    }
+        function closeMenu() {
+            burger?.classList.remove("active");
+            menu?.classList.remove("active");
+            overlay?.classList.remove("active");
+        }
     </script>
 
-    <!-- ===== CUSTOM JS MUST BE BELOW jQuery & Slick ===== -->
+    <!-- PAGE JS -->
     <script src="{% static 'js/about.js' %}"></script>
     <script src="{% static 'js/classes.js' %}"></script>
     <script src="{% static 'js/stats.js' %}"></script>
+
+    <!-- PRELOADER JS -->
+<script>
+window.addEventListener("load", () => {
+    // ОБЩЕЕ ВРЕМЯ = 1.8s появления + 1s пауза
+    setTimeout(() => {
+        document.getElementById("preloader").classList.add("hidden");
+    }, 2800); // ← можешь увеличить на 3200/3500 для длинной паузы
+});
+</script>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

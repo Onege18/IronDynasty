@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="error-box">
+    <h2>{{ message }}</h2>
+    <a class="error-back" href="{% url 'schedule' %}">Назад к расписанию</a>
+</div>
+
+<style>
+.error-box {
+    max-width: 600px;
+    margin: 120px auto;
+    padding: 40px 30px;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+
+.error-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #d4af37;
+}
+
+.error-back {
+    color: #d4af37;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.error-back:hover {
+    background: #d4af37;
+    color: #000;
+}
+</style>
+
+{% endblock %}

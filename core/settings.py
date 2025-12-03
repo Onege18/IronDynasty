@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.pages',
-    'apps.users',
+    'apps.users.apps.UsersConfig',
     'apps.membership',
     'apps.schedule',
     'apps.bookings',

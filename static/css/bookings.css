@@ -1,0 +1,56 @@
+.bookings-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.section {
+    background: rgba(255,255,255,0.06);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    color: #d4af37;
+}
+
+.booking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking-card {
+    background: rgba(255,255,255,0.08);
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.booking-card.past {
+    opacity: 0.6;
+}
+
+.trainer {
+    color: #ccc;
+}
+
+.cancel-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff4646;
+    font-weight: 700;
+}
+
+.empty {
+    color: #aaa;
+}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/membership_history.css' %}">
+
+<div class="history-container">
+    <h1>История Абонементов</h1>
+
+    {% if history %}
+        <table class="history-table">
+            <tr>
+                <th>Тип</th>
+                <th>Цена</th>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th>Дата покупки</th>
+            </tr>
+
+            {% for item in history %}
+            <tr>
+                <td>{{ item.membership_type }}</td>
+                <td>{{ item.price }} ₸</td>
+                <td>{{ item.start_date }}</td>
+                <td>{{ item.end_date }}</td>
+                <td>{{ item.purchased_at|date:"d.m.Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Покупок ещё нет</p>
+    {% endif %}
+
+</div>
+{% endblock %}
