@@ -671,3 +671,222 @@ body {
 }
 
 
+
+
+/* ============= FANCY HERO BUTTON ============= */
+
+.button {
+  --black-700: hsla(0 0% 12% / 1);
+  --border_radius: 9999px;
+  --transtion: 0.3s ease-in-out;
+  --offset: 2px;
+
+  cursor: pointer;
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  transform-origin: center;
+
+  padding: 1rem 2.4rem;
+  background-color: transparent;
+
+  border: none;
+  border-radius: var(--border_radius);
+  transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+
+  transition: transform var(--transtion);
+  text-decoration: none;              /* для <a> */
+}
+
+/* тень/фон */
+.button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-700);
+
+    border-radius: var(--border_radius);
+
+    box-shadow:
+      inset 0 0.5px rgba(255, 255, 255, 0.12),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.4),
+      0px 4px 10px -4px rgba(0, 0, 0, 0.4);
+
+    transition: all var(--transtion);
+    z-index: 0;
+}
+
+
+/* неоновый перелив */
+.button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+
+    background-color: hsl(31, 83%, 14%);
+
+    background-image:
+        radial-gradient(at 50% 100%, hsl(43, 98%, 62%) 0px, transparent 60%),
+        radial-gradient(at 80% 0%,   hsl(38, 90%, 55%) 0px, transparent 60%),
+        radial-gradient(at 0% 50%,   hsl(50, 90%, 70%) 0px, transparent 60%);
+
+    background-blend-mode: screen;
+
+    opacity: var(--active, 0);
+
+    border-radius: var(--border_radius);
+    transition: opacity var(--transtion);
+    z-index: 2;
+
+    /* мягкое золотое свечение вокруг кнопки */
+    box-shadow:
+        0 0 15px rgba(255, 170, 70, calc(var(--active, 0) * 0.45)),
+        0 0 40px rgba(255, 215, 130, calc(var(--active, 0) * 0.35)),
+        0 0 80px rgba(255, 200, 80,  calc(var(--active, 0) * 0.25));
+}
+
+
+.button:is(:hover, :focus-visible) {
+  --active: 1;
+}
+
+.button:active {
+  transform: scale(1);
+}
+
+/* бегущие точки по бордеру */
+.button .dots_border {
+  --size_border: calc(100% + 2px);
+
+  overflow: hidden;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: var(--size_border);
+  height: var(--size_border);
+  background-color: transparent;
+
+  border-radius: var(--border_radius);
+  z-index: -10;
+}
+
+.button .dots_border::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+
+  width: 100%;
+  height: 2rem;
+  background-color: white;
+
+  mask: linear-gradient(transparent 0%, white 120%);
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* иконка искорки */
+.button .sparkle {
+  position: relative;
+  z-index: 10;
+
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .sparkle-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.button .sparkle .path {
+  fill: currentColor;
+  stroke: currentColor;
+
+  transform-origin: center;
+  color: hsl(0, 0%, 100%);
+}
+
+.button:is(:hover, :focus) .sparkle .path {
+  animation: path 1.5s linear 0.5s infinite;
+}
+
+.button .sparkle .path:nth-child(1) {
+  --scale_path_1: 1.2;
+}
+.button .sparkle .path:nth-child(2) {
+  --scale_path_2: 1.2;
+}
+.button .sparkle .path:nth-child(3) {
+  --scale_path_3: 1.2;
+}
+
+@keyframes path {
+  0%, 34%, 71%, 100% {
+    transform: scale(1);
+  }
+  17% {
+    transform: scale(var(--scale_path_1, 1));
+  }
+  49% {
+    transform: scale(var(--scale_path_2, 1));
+  }
+  83% {
+    transform: scale(var(--scale_path_3, 1));
+  }
+}
+
+/* текст кнопки */
+.button .text_button {
+  position: relative;
+  z-index: 10;
+
+  background-image: linear-gradient(
+    90deg,
+    hsla(0 0% 100% / 1) 0%,
+    hsla(0 0% 100% / var(--active, 0)) 120%
+  );
+  background-clip: text;
+
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: transparent;
+}
+
+@media (max-width: 480px) {
+  .hero-cta {
+    padding: 0.85rem 1.8rem;
+  }
+
+  .hero-cta .text_button {
+    font-size: 0.9rem;
+  }
+}
